@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CancionesController;
@@ -18,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/canciones', [CancionesController::class, 'index'])->middleware('auth', 'verified')->name('canciones.index');
+Route::get('/canciones', [CancionesController::class, 'index'])->middleware('auth')->name('canciones.index');
 Route::get('/canciones/create', [CancionesController::class, 'create'])->name('canciones.create');
 Route::post('/canciones', [CancionesController::class, 'store'])->name('canciones.store');
 Route::get('/canciones/{id}', [CancionesController::class, 'show'])->name('canciones.show');
