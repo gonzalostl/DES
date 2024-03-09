@@ -25,7 +25,7 @@ class LoginController extends Controller{
         
         Auth::login($user);
 
-        return redirect(route('privada'));
+        return redirect(route('canciones.index'));
     }
 
     public function login(Request $request){
@@ -44,7 +44,7 @@ class LoginController extends Controller{
 
             $request->session()->regenerate();
 
-            return redirect()->intended(route('privada'));
+            return redirect()->intended(route('canciones.index'));
 
         }else{
             return redirect('login');

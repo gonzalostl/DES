@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/canciones', [CancionesController::class, 'index'])->name('canciones.index');
+Route::get('/canciones', [CancionesController::class, 'index'])->middleware('auth', 'verified')->name('canciones.index');
 Route::get('/canciones/create', [CancionesController::class, 'create'])->name('canciones.create');
 Route::post('/canciones', [CancionesController::class, 'store'])->name('canciones.store');
 Route::get('/canciones/{id}', [CancionesController::class, 'show'])->name('canciones.show');
@@ -28,7 +28,6 @@ Route::delete('/canciones/{id}', [CancionesController::class, 'destroy'])->name(
 
 Route::view('/login', "login")->name('login');
 Route::view('/registro', "register")->name('registro');
-Route::view('/privada', "secret")->middleware('auth')->name('privada');
 
 Route::post('/validar-registro', [LoginController::class,'register'])->
 name('validar-registro');

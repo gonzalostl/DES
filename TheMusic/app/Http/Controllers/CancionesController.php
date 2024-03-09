@@ -77,7 +77,7 @@ class CancionesController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'artista' => 'required|string|max:255' . $id,
-            'duracion' => 'required|integer|unique:usuarios,descripcion,' . $id,
+            'duracion' => 'required|integer|unique:canciones,duracion,' . $id,
             
         ]);
 
